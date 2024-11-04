@@ -21,7 +21,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // Für HTTPS auf `true` setzen
+  cookie: { secure: true } // Für HTTPS auf `true` setzen
 }));
 
 

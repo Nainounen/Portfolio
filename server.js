@@ -18,14 +18,18 @@ const PASSWORD = "Nino";
 app.use(helmet());
 
 
+const helmet = require('helmet');
+
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net"]
+      scriptSrc: ["'self'", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net"],
+      scriptSrcAttr: ["'unsafe-inline'"] // Erlaubt Inline-Event-Handler
     },
   })
 );
+
 
 // Middleware
 app.use(bodyParser.json());

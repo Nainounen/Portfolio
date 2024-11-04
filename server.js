@@ -1,31 +1,34 @@
-const express = require('express');
+onst express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const MongoStore = require('connect-mongo'); // Importiere connect-mongo für MongoDB-Sessions
 const path = require('path');
-const helmet = require('helmet'); // Helmet für Sicherheitsheader
-require('dotenv').config(); // Lädt die Umgebungsvariablen aus der .env-Datei
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Nutze den Heroku-Port oder 3000 als Fallback
+const PORT = process.env.PORT || 3000;
 
-
-
-const PASSWORD = "Nino"; // Dein Passwort für die Authentifizierung
+const PASSWORD = "Nino";
 
 // Sicherheitsheader aktivieren
-app.use(helmet()); // Fügt Header wie Content-Security-Policy, XSS-Schutz und mehr hinzu
+app.use(helmet());
 
 // Middleware
 app.use(bodyParser.json());
 
-// Sitzungsverwaltung einrichten
+// Sitzungsverwaltung einrichten mit MongoDB-Store
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true } // Für HTTPS auf `true` setzen
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI, // Verbindung zur MongoDB-Datenbank
+    ttl: 14 * 24 * 60 * 60 // Sessions werden 14 Tage lang gespeichert
+  }),
+  cookie: { secure: true } // In Produktion auf `true` setzen, wenn HTTPS aktiviert ist
 }));
-
 
 // Authentifizierungs-Middleware
 function isAuthenticated(req, res, next) {

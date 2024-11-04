@@ -12,7 +12,7 @@ app.enable('trust proxy');
 
 const PORT = process.env.PORT || 3000;
 
-const PASSWORD = "Nino";
+const PASSWORD = "F4stConn3ct!on";
 
 // Sicherheitsheader aktivieren
 app.use(helmet());

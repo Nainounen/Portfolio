@@ -24,20 +24,27 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URI, // Verbindung zur MongoDB-Datenbank
-    ttl: 14 * 24 * 60 * 60 // Sessions werden 14 Tage lang gespeichert
+    mongoUrl: process.env.MONGO_URI,
+    ttl: 14 * 24 * 60 * 60 // Speichert Sessions 14 Tage lang
   }),
-  cookie: { secure: true } // In Produktion auf `true` setzen, wenn HTTPS aktiviert ist
+  cookie: {
+    secure: process.env.NODE_ENV === 'production', // Nur in Produktion auf true setzen
+    httpOnly: true
+  }
 }));
 
 // Authentifizierungs-Middleware
 function isAuthenticated(req, res, next) {
+  console.log("Session status:", req.session); // Überprüft, ob die Session vorhanden ist
   if (req.session.authenticated) {
     return next();
   } else {
+    console.log("User not authenticated, redirecting...");
     res.redirect('/');
   }
 }
+
+
 
 // Geschützte Routen definieren
 app.get('/portfolioindex.html', isAuthenticated, (req, res) => {

@@ -375,3 +375,9 @@ function closeProject() {
   // Event-Listener entfernen, um Mehrfachklicks zu vermeiden
   overlay.removeEventListener("click", closeProject);
 }
+
+window.addEventListener('load', function() {
+  const loadingScreen = document.getElementById('loading-screen');
+  loadingScreen.style.opacity = '0'; // Für sanftes Ausblenden
+  setTimeout(() => loadingScreen.style.display = 'none', 500); // Versteckt nach dem Ausblenden
+});

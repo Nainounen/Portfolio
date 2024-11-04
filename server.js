@@ -24,14 +24,15 @@ app.use(session({
   saveUninitialized: false,
   store: MongoStore.create({
     mongoUrl: process.env.MONGO_URI,
-    ttl: 14 * 24 * 60 * 60 // Sessions werden 14 Tage lang gespeichert
+    ttl: 14 * 24 * 60 * 60
   }),
   cookie: {
-    secure: process.env.NODE_ENV === 'production' ? true : false, // Nur in Produktion auf true setzen
+    secure: false, // Testweise auf false setzen
     httpOnly: true,
-    sameSite: 'lax' // Empfohlen für Sessions auf Heroku
+    sameSite: 'lax'
   }
 }));
+
 
 
 // Authentifizierungs-Middleware

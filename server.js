@@ -6,7 +6,9 @@ const helmet = require('helmet'); // Helmet für Sicherheitsheader
 require('dotenv').config(); // Lädt die Umgebungsvariablen aus der .env-Datei
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // Nutze den Heroku-Port oder 3000 als Fallback
+
+
 
 const PASSWORD = "Nino"; // Dein Passwort für die Authentifizierung
 
@@ -82,5 +84,5 @@ app.post('/check-password', limiter, (req, res) => {
 
 // Server starten
 app.listen(PORT, () => {
-  console.log(`Server läuft auf http://localhost:${PORT}`);
+  console.log(`Server läuft auf Port ${PORT}`);
 });

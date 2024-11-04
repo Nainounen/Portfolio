@@ -20,20 +20,20 @@ app.use(helmet());
 // Middleware
 app.use(bodyParser.json());
 
+
+
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URI,
-    ttl: 14 * 24 * 60 * 60
-  }),
   cookie: {
-    secure: false, // Testweise auf false setzen
+    secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     sameSite: 'lax'
   }
 }));
+
+
 
 
 

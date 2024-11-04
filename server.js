@@ -18,20 +18,21 @@ app.use(helmet());
 // Middleware
 app.use(bodyParser.json());
 
-// Sitzungsverwaltung einrichten mit MongoDB-Store
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
     mongoUrl: process.env.MONGO_URI,
-    ttl: 14 * 24 * 60 * 60 // Speichert Sessions 14 Tage lang
+    ttl: 14 * 24 * 60 * 60 // Sessions werden 14 Tage lang gespeichert
   }),
   cookie: {
-    secure: process.env.NODE_ENV === 'production', // Nur in Produktion auf true setzen
-    httpOnly: true
+    secure: process.env.NODE_ENV === 'production' ? true : false, // Nur in Produktion auf true setzen
+    httpOnly: true,
+    sameSite: 'lax' // Empfohlen für Sessions auf Heroku
   }
 }));
+
 
 // Authentifizierungs-Middleware
 function isAuthenticated(req, res, next) {

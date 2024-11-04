@@ -16,7 +16,7 @@ const PASSWORD = "Nino";
 
 // Sicherheitsheader aktivieren
 app.use(helmet());
-const helmet = require('helmet');
+
 
 app.use(
   helmet.contentSecurityPolicy({

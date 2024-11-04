@@ -58,7 +58,7 @@ app.get('/styles_portfolio.css', isAuthenticated, (req, res) => {
 // `public` Ordner zuletzt laden, damit nur ungeschützte Inhalte ohne Authentifizierung erreichbar sind
 app.use(express.static(path.join(__dirname, 'public')));
 
-const rateLimit = require('express-rate-limit');
+
 
 // Rate Limiting für die Passwortüberprüfung
 const limiter = rateLimit({

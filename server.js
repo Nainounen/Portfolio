@@ -16,6 +16,16 @@ const PASSWORD = "Nino";
 
 // Sicherheitsheader aktivieren
 app.use(helmet());
+const helmet = require('helmet');
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net"]
+    },
+  })
+);
 
 // Middleware
 app.use(bodyParser.json());

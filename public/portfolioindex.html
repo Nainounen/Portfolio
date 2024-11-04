@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Startseite</title>
+  <link rel="stylesheet" href="styles_portfolio.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+<body>
+<!-- Social Links Sidebar -->
+<aside class="social-nav">
+  <!-- Navigation Label (text displayed when sidebar is collapsed) -->
+  <span class="nav-label">NAVIGATION</span>
+
+  <!-- Profilbild oben -->
+  <div class="profile-image">
+    <a href="#top"> <!-- Anker-Tag um das Bild -->
+      <img src="img/Profilbild.jpg" alt="Profilbild">
+    </a>
+  </div>
+  
+
+  <li class="link-item">
+    <a href="#cv">
+      <div class="link-icon">
+        <img src="logos/004-cv.svg" alt="über mich" class="logos">
+      </div>
+      <div class="link-text">
+        <span>CV</span>
+      </div>
+    </a>
+  </li>
+
+ 
+
+  <!-- Link zum Projekte-Bereich -->
+  <li class="link-item">
+    <a href="#projects">
+      <div class="link-icon">
+        <img src="logos/003-layers.svg" alt="projekte" class="logos">
+      </div>
+      <div class="link-text">
+        <span>Projekte</span>
+      </div>
+    </a>
+  </li>
+
+   <!-- Link zum Motivation-Bereich -->
+   <li class="link-item">
+    <a href="#motivation">
+      <div class="link-icon">
+        <img src="logos/002-fist.svg" alt="Motivation" class="logos">
+      </div>
+      <div class="link-text">
+        <span>Motivation</span>
+      </div>
+    </a>
+  </li>
+
+  <!-- Link zum Kontakt-Bereich -->
+  <li class="link-item">
+    <a href="#contact">
+      <div class="link-icon">
+        <img src="logos/001-chat.svg" alt="Kontakt" class="logos">
+      </div>
+      <div class="link-text">
+        <span>Kontakt</span>
+      </div>
+    </a>
+  </li>
+</ul>
+</aside>
+
+
+
+
+  <div class="hero-section">
+    <div class="profile-picture">
+      <img src="img/Profilbild.jpg" alt="Profilbild">
+    </div>
+    <h2>Willkommen auf meinem Portfolio</h2>
+    <p>Entdecken Sie meinen Lebenslauf, mein Motivationsschreiben und Projekte.</p>
+  </div>
+<div id="background-image"></div>
+<div id="layer"></div>
+  <!-- Background Canvas für die 3D Objekte -->
+  <div id="background-canvas"></div>
+
+  <section id="cv" class="cv-section">
+  <section class="cv-container">
+    <div class="about-me">
+      <h2>Über mich</h2>
+      <p>Ich bin im ersten Lehrjahr als Applikationsentwickler bei Swisscom und möchte meine Kenntnisse in ASP.NET, C# und Webtechnologien im Projekt 'ASP.NET / C# Entwickler für Marketing' einbringen. Hier sehe ich die Möglichkeit, wertvolle Erfahrung in der Weiterentwicklung datenbasierter Web-Applikationen und Marketing-Analytics zu sammeln.</p>
+    </div>
+    
+    <div class="education">
+      <h2>Bildung</h2>
+      <div class="education-timeline">
+        <div class="education-entry">
+          <div class="timeline-marker">
+            <span>2023 - 2024</span>
+          </div>
+          <p class="education-title">10. Klasse Informatik, Schule Benedikt Luzern</p>
+          <p class="education-description">Vertiefung in Informatik und Grundlagen der Programmierung.</p>
+        </div>
+        <div class="education-entry">
+          <div class="timeline-marker">
+            <span>2020 - 2023</span>
+          </div>
+          <p class="education-title">Kantonsschule Seetal, Gymnasium</p>
+          <p class="education-description">Allgemeinbildung mit Schwerpunkt auf Mathematik und Naturwissenschaften.</p>
+        </div>
+        <div class="education-entry">
+          <div class="timeline-marker">
+            <span>2014 - 2020</span>
+          </div>
+          <p class="education-title">Primarschule, Hitzkirch</p>
+          <p class="education-description">Grundlegende Schulbildung mit Fokus auf Sprach- und Sozialkompetenzen.</p>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    <div class="skills">
+      <h2>Fähigkeiten</h2>
+      
+      <div class="skill">
+          <span>C#</span>
+          <div class="skill-bar"><div class="skill-level" style="width: 80%;"></div></div>
+      </div>
+      
+      <div class="skill">
+          <span>Python</span>
+          <div class="skill-bar"><div class="skill-level" style="width: 60%;"></div></div>
+      </div>
+      
+      <div class="skill">
+          <span>SQL</span>
+          <div class="skill-bar"><div class="skill-level" style="width: 30%;"></div></div>
+      </div>
+      
+    
+      
+      <div class="skill">
+          <span>JavaScript</span>
+          <div class="skill-bar"><div class="skill-level" style="width: 40%;"></div></div>
+      </div>
+      
+      
+  </div>
+  
+    <div class="certificates">
+      <h2>Zertifikate</h2>
+      <ul>
+        <li><a href="zertifikate/Achievements - ninomeier-3833 _ Microsoft Learn.pdf" download="Prepare_to_develop_AI_solutions_on_Azure.pdf">Prepare to develop AI solutions on Azure</a></li>
+        <li><a href="zertifikate/Bestaetigung ICT Campus_2023.pdf" download="ICT_Scouts_Campus.pdf">ICT Scouts/Campus</a></li>
+        <li><a href="zertifikate/Diplom M164.pdf" download="M164_Datenbanken_erstellen_und_Daten_einfuegen.pdf">M164 Datenbanken erstellen und Daten einfügen</a></li>
+    </ul>
+    
+    </div>
+    
+  
+    <div class="languages">
+      <h2>Sprachen</h2>
+      <div class="language">
+        <span>Deutsch</span>
+        <p class="language-level">Muttersprache</p>
+        <div class="skill-bar"><div class="skill-level" style="width: 100%;"></div></div>
+      </div>
+      <div class="language">
+        <span>Englisch</span>
+        <p class="language-level">Schulkenntnisse (seit der 3. Klasse)</p>
+        <div class="skill-bar"><div class="skill-level" style="width: 85%;"></div></div>
+      </div>
+      <div class="language">
+        <span>Französisch</span>
+        <p class="language-level">Schulkenntnisse (seit der 5. Klasse)</p>
+        <div class="skill-bar"><div class="skill-level" style="width: 40%;"></div></div>
+      </div>
+    </div>
+    
+  </section>
+</section>
+  
+  
+  
+
+
+
+<!-- Projekte Section -->
+<section id="projects" class="projects-section">
+  <section class="projects-container">
+    
+    <!-- Projekt 1 -->
+<div class="project-box" id="projekt1" onclick="openProject('projekt1')">
+  <img src="img/Website-Banner.png" alt="Projekt Bild 1" class="project-image">
+  <h3>Website</h3>
+  <span class="status-dot finished">Fertig</span>
+  <p class="project-description">Benutzerfreundliche Website für Aloeimport mit Bestellfunktion entwickelt.</p>
+</div>
+<section></section>
+<section></section>
+<!-- Projekt 2 -->
+<div class="project-box" id="projekt2" onclick="openProject('projekt2')">
+  <img src="img/presentation.png" alt="Projekt Bild 2" class="project-image">
+  <h3>Präsentation</h3>
+  <span class="status-dot finished">Fertig</span>
+  <p class="project-description">Eigenes Präsentationstemplate nach Swisscom-Richtlinien erstellt.</p>
+</div>
+
+<!-- Projekt 3 -->
+<div class="project-box" id="projekt3" onclick="openProject('projekt3')">
+  <img src="img/ai-learning.png" alt="Projekt Bild 3" class="project-image">
+  <h3>AI erlernen</h3>
+  <span class="status-dot in-progress">In Arbeit</span>
+  <p class="project-description">Strukturiertes KI-Lernen in Notion für zukünftige KI-Projekte.</p>
+</div>
+<!-- Projekt 4 -->
+ <section></section>
+ <section></section>
+<div class="project-box" id="projekt4" onclick="openProject('projekt4')">
+  <img src="img/notion.png" alt="Projekt Bild 4" class="project-image">
+  <h3>Notion</h3>
+  <span class="status-dot in-progress">In Arbeit</span>
+  <p class="project-description">Komplette Organisation meiner Ausbildung in Notion.</p>
+</div>
+<!-- Projekt 3 -->
+<div class="project-box" id="projekt5" onclick="openProject('projekt5')">
+  <img src="img/building-ai.png" alt="Projektbild 5" Bild 5" class="project-image">
+  <h3>AI bauen</h3>
+  <span class="status-dot not-started">Noch nicht gestartet</span>
+  <p class="project-description">Plan zur Entwicklung einer eigenen KI nach Abschluss des Lernprojekts.</p>
+</div>
+    
+  </section>
+</section>
+
+<!-- HTML Struktur für das Overlay -->
+<div class="overlay">
+  <div class="expanded-project">
+    <button class="close-btn" onclick="closeProject()">✖</button>
+    <div class="expanded-content">
+      <div class="title-image-container">
+        <div>
+          <h1 id="expandedTitle" class="expanded-text">Projekt Titel</h1>
+          <span id="expandedStatus" class="expanded-status">Status</span>
+        </div>
+        <img id="expandedImage" src="" alt="Projekt Bild" class="expanded-image">
+      </div>
+      <p id="expandedDescription" class="scrollable-text">Genauere Beschreibung für das Projekt.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <section id="motivation" class="motivation-section">
+    <h2>Motivationsschreiben</h2>
+    <div class="motivation-content">
+      <p>Sehr geehrtes Projektteam von Data Insights,</p>
+  
+      <p>ich möchte mich mit grosser Begeisterung für die Möglichkeit bewerben, an Ihrem Projekt "Data Insights" teilzunehmen. Als Lehrling im Bereich Applikationsentwicklung bei Swisscom verfolge ich das Ziel, meine Fähigkeiten im Bereich Datenanalyse und Business Intelligence weiterzuentwickeln. Dieses Projekt bietet mir die perfekte Gelegenheit, praktische Erfahrung in der Analyse von Daten und der Generierung wertvoller Einblicke zu sammeln, um die Entscheidungsfindung zu unterstützen.</p>
+  
+      <p>Während meiner Ausbildung habe ich bereits fundierte Kenntnisse in der Entwicklung datenbasierter Anwendungen erworben und konnte mein technisches Verständnis für Datenbanken, Statistik und Visualisierungen vertiefen. Ich bin überzeugt, dass ich mit meinem Engagement und meiner schnellen Auffassungsgabe einen positiven Beitrag zu Ihrem Team leisten kann. Meine Leidenschaft für datengetriebene Projekte motiviert mich, innovative Lösungen zu finden und wertvolle Erkenntnisse für Swisscom bereitzustellen.</p>
+  
+      <p>Ich freue mich sehr auf die Gelegenheit, von erfahrenen Kolleginnen und Kollegen zu lernen und gemeinsam an zukunftsweisenden Projekten zu arbeiten. Gerne bringe ich meine analytischen Fähigkeiten und mein technisches Wissen ein, um die Data Insights-Initiative erfolgreich zu unterstützen.</p>
+  
+      <p>Mit freundlichen Grüssen,<br>
+      Nino</p>
+    </div>
+  </section>
+
+
+  <section id="contact" class="contact-section">
+    <h2>Kontaktaufnahme</h2>
+    <form class="contact-form" id="contactForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required placeholder="Ihr Name">
+      
+      <label for="email">E-Mail</label>
+      <input type="email" id="email" name="email" required placeholder="Ihre E-Mail-Adresse">
+      
+      <label for="message">Nachricht</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Ihre Nachricht oder Ihr Feedback"></textarea>
+      
+      <button type="button" onclick="sendMail()">Nachricht senden</button>
+    </form>
+  
+    <!-- Bestätigung mit grossem Haken -->
+    <div id="successMessage" class="success-message" style="display: none;">
+      <div class="checkmark-container">
+        <span class="checkmark">✓</span>
+      </div>
+      <p>Nachricht erfolgreich weitergeleitet!</p>
+    </div>
+  </section>
+  
+  
+  
+  
+  
+  <script src="script_portfolio.js"></script>
+</body>
+</html>

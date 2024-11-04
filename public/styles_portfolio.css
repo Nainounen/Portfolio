@@ -1,0 +1,851 @@
+body {
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  margin: 0;
+  background-size: cover;
+  overflow-x: hidden;
+  position: relative;
+}
+
+
+
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 100px 20px;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 0;
+  color: #ffffff;
+  background-color: #121212c4;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+.profile-picture {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #444;
+  margin: 0 auto;
+  size:30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  transform: scale(01); /* Skaliert das Bild auf 80% der ursprünglichen Größe */
+  object-fit: cover; /* Bild füllt die Fläche */
+}
+
+
+/* Hintergrund Canvas für 3D Objekte */
+#background-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -2;
+  pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#background-image{
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background-image: url('img/background.jpg');
+  background-size: cover; /* Ensures the background image covers the entire layer */
+  background-position: center; /* Centers the background image */
+
+  z-index: -2; /* Zwischen Asteroiden und Inhalt */
+  
+}
+#layer{
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background-color: rgba(0, 0, 0, 0.5);
+  background-size: cover; /* Ensures the background image covers the entire layer */
+  background-position: center; /* Centers the background image */
+
+  z-index: -1; /* Zwischen Asteroiden und Inhalt */
+  
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Social Navigation */
+.social-nav {
+  color: rgb(255, 255, 255);
+  position: fixed;
+  right: -125px; /* Adjust this based on the width of the navbar */
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 2em;
+  background: #121212c4;
+  border-radius: 0.5em 0 0 0.5em;
+  box-shadow: -4px 0px 0px rgb(112, 0, 192);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  width: 100px; /* Adjust width as needed */
+  z-index: 1;
+}
+
+.social-nav:hover {
+  transform: translate(-120px, -50%); /* Slides the navbar fully into view */
+  box-shadow: -8px 0px 20px rgb(112, 0, 192);
+}
+
+/* Navigation Label */
+.nav-label {
+  position: absolute;
+  top: 50%; /* Vertikal zentriert */
+  left: 10px; /* Horizontal positioniert auf der roten Linie */
+  transform: translateY(-50%); /* Exakte vertikale Zentrierung */
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 1.2rem; /* Größere Schriftgröße */
+  font-weight: bold; /* Dickere Schrift */
+  letter-spacing: 0.1em; /* Abstand zwischen den Buchstaben */
+  color: #ffffff;
+  transition: opacity 300ms ease;
+  opacity: 1;
+}
+
+
+
+.social-nav:hover .nav-label {
+  opacity: 0; /* Hide the text when navbar is expanded */
+}
+
+/* Profile Image */
+.profile-image {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+  transition: box-shadow 300ms ease;
+}
+
+.profile-image:hover {
+  box-shadow: 0px 0px 10px 2px rgb(112, 0, 192); /* Leichter Schimmer-Effekt um das Bild */
+}
+
+
+.profile-image img {
+  width: 100%;
+  height: auto;
+  
+}
+
+
+
+
+/* Link List */
+.link-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.link-item {
+  position: relative;
+  width: 180px; /* Gesamtbreite des Containers */
+  height: 40px;
+  display: flex;
+  justify-content: flex-start; /* Logos und Text nach links ausrichten */
+  align-items: center;
+  overflow: hidden;
+}
+
+.logos {
+  width: 35px;
+  height: 35px;
+  transform: translateX(75px);
+  transition: transform 300ms ease; 
+
+}
+
+.link-item a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+  width: 100%;
+  transition: color 200ms ease;
+  gap: 10px; /* Abstand zwischen Logo und Text */
+}
+
+.link-item a .link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+}
+
+.link-item a .link-text {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.link-item a:hover .logos {
+  transform: translateX(40px); /* SVG-Icon leicht nach links verschieben */
+  filter: drop-shadow(0px 0px 2px rgb(112, 0, 192)) drop-shadow(0px 0px 2px rgb(112, 0, 192));
+  transition: transform 300ms ease, filter 300ms ease;
+}
+
+
+
+
+.link-item a:hover .link-text {
+  opacity: 1; 
+  transform: translateX(40px); /* Text beim Hover sichtbar machen */
+  filter: drop-shadow(0px 0px 2px rgb(112, 0, 192)) drop-shadow(0px 0px 2px rgb(112, 0, 192));
+  transition: transform 300ms ease, filter 300ms ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cv-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(100px, auto); /* Variable Zeilenhöhen */
+  gap: 30px;
+  padding: 50px;
+  max-width: 1000px;
+  margin: 50px auto;
+  grid-auto-flow: dense; /* Füllt leere Bereiche automatisch */
+}
+
+.cv-container h2 {
+  color: rgb(112, 0, 192);
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.about-me, .education, .skills, .languages, .certificates {
+  background: rgba(255, 255, 255, 0.1); /* Glas-Effekt */
+  backdrop-filter: blur(10px); /* Weicher Glas-Effekt */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-me:hover, .education:hover, .skills:hover, .languages:hover, .certificates:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.job h3, .education-entry p, .languages .language span, .certificates ul li {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #e0e0e0;
+}
+
+/* Sprachen */
+.languages {
+  margin-bottom: 30px;
+}
+
+.language {
+  margin-bottom: 20px;
+}
+
+.language span {
+  font-weight: bold;
+  color: #e0e0e0;
+}
+
+.language-level {
+  display: block;
+  color: #a0a0a0;
+  margin: 2px 0 8px; /* Abstand zwischen Text und Skill-Bar */
+}
+
+.skill-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(112, 0, 192, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 5px; /* Abstand zwischen Text und Bar */
+}
+
+.skill-level {
+  height: 100%;
+  background: linear-gradient(90deg, rgb(112, 0, 192), rgb(150, 0, 250));
+  border-radius: 20px;
+  transition: width 1s ease;
+}
+
+/* Skills */
+.skills {
+  margin-bottom: 30px;
+}
+
+.skill {
+  margin-bottom: 20px;
+}
+
+.skill span {
+  display: block;
+  font-weight: bold;
+  color: #e0e0e0;
+  margin-bottom: 8px; /* Abstand zwischen Skill-Name und Skill-Bar */
+}
+
+
+
+.cv-container > div {
+  margin-bottom: 30px;
+}
+
+
+
+.certificates {
+  margin-bottom: 30px;
+}
+
+.certificates h2 {
+  color: rgb(112, 0, 192);
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.certificates ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.certificates ul li {
+  margin-bottom: 10px;
+  padding: 12px 15px;
+  background-color: rgba(112, 0, 192, 0.2); /* Dunklere Hintergrundfarbe für besseren Kontrast */
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.certificates ul li:hover {
+  background-color: rgba(112, 0, 192, 0.3); /* Noch dunklerer Hintergrund beim Hover */
+}
+
+.certificates ul li a {
+  text-decoration: none;
+  color: #ffffff; /* Weißer Text für besseren Kontrast */
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.certificates ul li a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.education {
+  grid-row: span 2;
+  position: relative;
+}
+
+.education-timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 80px; /* Mehr Platz für den Strich und Jahreszahlen */
+}
+
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  left: 25px; /* Position des Strichs */
+  top: 6px; /* Kürzt das obere Ende, sodass es hinter dem Punkt versteckt ist */
+  width: 4px; /* Breitere Linie für den Zeitstrahl */
+  height: calc(100% + 14px); /* Verlängert den Strich nach unten */
+  background: linear-gradient(180deg, rgb(112, 0, 192), rgb(150, 0, 250)); /* Farbverlauf für den Strich */
+  border-radius: 2px; /* Runde Enden für den Strich */
+  z-index: -1; /* Damit der Strich hinter den Markern bleibt */
+}
+.education-title {
+  color: #ffffff; /* Weißer Text für den Titel */
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.education .education-description {
+  color: #a0a0a0; /* Grauer Text für die Beschreibung */
+  font-size: 0.9rem;
+  margin-top: 5px; /* Abstand zwischen Titel und Beschreibung */
+  line-height: 1.4; /* Angenehme Zeilenhöhe für bessere Lesbarkeit */
+}
+
+
+
+.timeline-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.timeline-marker::after {
+  content: '';
+  position: absolute;
+  left: -69px; /* Positioniert den Punkt direkt auf dem Strich */
+  width: 12px;
+  height: 12px;
+  background-color: rgb(112, 0, 192); /* Farbe der Punkte */
+  border-radius: 50%; /* Runde Form für die Punkte */
+  box-shadow: 0 0 5px rgba(112, 0, 192, 0.5); /* Leichter Schimmer */
+}
+
+.timeline-marker span {
+  position: relative;
+  left: -20px; /* Position der Jahreszahl weiter links */
+  color: #e0e0e0;
+  font-weight: bold;
+}
+
+.education-entry {
+  margin-bottom: 20px;
+  padding-left: 10px; /* Abstand vom Zeitstrahl */
+}
+
+.education-entry p {
+  margin: 0;
+  color: #e0e0e0;
+}
+
+
+
+.motivation-section {
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.1); /* Glas-Effekt */
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.motivation-section h2 {
+  color: rgb(112, 0, 192);
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.motivation-content p {
+  color: #e0e0e0; /* Angenehme Grau-Ton für Text */
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.motivation-content p:first-of-type {
+  font-weight: bold;
+  color: #ffffff; /* Weiß für den Anrede-Absatz */
+}
+
+.motivation-content p:last-of-type {
+  font-weight: bold;
+  color: #ffffff; /* Weiß für den Abschieds-Absatz */
+  text-align: right;
+}
+/* Erfolgsnachricht-Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Styling für Kontaktformular und Bestätigung */
+.contact-section {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 50px auto;
+  max-width: 600px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  color: #e0e0e0;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  background-color: rgb(112, 0, 192);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: rgb(150, 0, 250);
+}
+
+/* Erfolgsnachricht-Styling und Animation */
+.success-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.5rem;
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 50px auto;
+  max-width: 500px;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.checkmark-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(112, 0, 192);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  animation: bounceIn 0.8s ease-out forwards; /* Bounce-In Animation für Haken */
+}
+
+.checkmark {
+  font-size: 4rem;
+  color: #ffffff;
+  line-height: 1;
+}
+
+
+
+
+
+
+
+
+
+/* Statusanzeige als ovales Rechteck */
+.status-dot {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.8em;
+  margin-top: 10px;
+}
+
+.finished {
+  background-color: rgba(0, 255, 0, 0.2); /* Status fertig */
+  box-shadow: 0px 0px 22px rgba(0, 255, 0, 0.2); /* Korrekte Syntax für box-shadow */
+}
+
+
+.in-progress {
+  background-color: rgba(255, 208, 0, 0.589);
+  box-shadow: 0px 0px 22px rgba(255, 208, 0, 0.589);
+}
+
+.not-started {
+  background-color: rgba(255, 0, 0, 0.521); /* Status noch nicht gestartet */
+  box-shadow: 0px 0px 22px rgba(255, 0, 0, 0.521);
+
+}
+
+
+
+
+
+
+/* Projekte-Container für die Anordnung */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Zwei Spalten für die Panels */
+  gap: 40px;
+  justify-items: center;
+  align-items: start;
+  padding: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* Vergrößerte Projektboxen */
+.project-box {
+  background: rgba(255, 255, 255, 0.1); /* Glas-Effekt */
+  backdrop-filter: blur(10px); /* Weichzeichner für Glaseffekt */
+  border-radius: 20px; /* Abgerundete Ecken */
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Weicher Schatten */
+  text-align: center;
+  width: 300px; /* Vergrößerte Breite */
+  height: 400px; /* Vergrößerte Höhe */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.project-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* Größerer Schatten bei Hover */
+}
+
+/* Bild in der Projektbox */
+.project-image {
+  width: 100%;
+  height: auto;
+  max-height: 150px; /* Begrenzung der Bildhöhe */
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+/* Zentrierter Titel */
+.project-box h3 {
+  color: rgb(112, 0, 192); /* Violette Farbe für Titel */
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 15px 0;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+
+
+
+/* Overlay für die vollständige Verdunkelung des Hintergrunds */
+.overlay {
+  display: none;
+  position: fixed; /* Bildschirmausfüllende Positionierung */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8); /* Abdunkelung des gesamten Bildschirms */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden; /* Verhindert das Scrollen des gesamten Overlays */
+}
+
+/* Großes Panel in der Mitte, kleiner als der gesamte Bildschirm */
+.expanded-project {
+  background: rgba(255, 255, 255, 0.1); /* Glas-Effekt für vergrößertes Panel */
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 40px;
+  width: 80vw; /* 60% der Bildschirmbreite */
+  height: 80vh; /* 60% der Bildschirmhöhe */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Stärkerer Schatten */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  animation: fadeIn 0.5s ease-out;
+  position: relative;
+  z-index: 1001;
+  overflow: hidden; /* Verhindert das Scrollen des gesamten Panels */
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #e0e0e0;
+}
+
+
+/* Textbereich auf der linken Seite des großen Panels */
+.expanded-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%; /* gesamte Breite für den Textbereich */
+  padding-right: 20px;
+  max-height: 100%; /* Begrenzung der Höhe für Scrollen */
+  overflow-y: auto; /* Scrollbar nur für den Textinhalt */
+}
+/* Anpassen des Layouts und der Abstände */
+.title-image-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 320px; /* Abstand zwischen Titel und Bild */
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.expanded-text {
+  color: rgb(112, 0, 192);
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-left: 20px;
+}
+.project-card a {
+  color: #6A5ACD; /* Beispiel: Lila Farbe für normale Links */
+  text-decoration: none; /* Entfernt die Standard-Unterstreichung */
+}
+/* Bild anpassen */
+.expanded-image {
+  width: 450px; /* Breitere Darstellung des Bildes */
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Status-Anzeige unter dem Titel */
+.expanded-status {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 20px;
+  color: white;
+}
+/* Scrollbar für Webkit-basierte Browser (Chrome, Safari, Edge) ausblenden */
+.expanded-content::-webkit-scrollbar {
+  display: none; /* Verbirgt die Scrollbar */
+}
+
+/* Sicherstellen, dass kein Scrollen angezeigt wird */
+.scrollable-text {
+  color: white;
+  font-size: 1rem;
+  margin-top: 20px;
+  white-space: normal; /* Erlaubt Zeilenumbruch */
+  line-height: 1.5;
+  /* Entferne die maximale Höhe und das Scrollen */
+}
+
+
+

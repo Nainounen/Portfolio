@@ -110,21 +110,33 @@ document.querySelector('.profile-image a').addEventListener('click', function (e
   });
 });
 
-function sendMail() {
+async function sendMail() {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const message = document.getElementById('message').value;
 
-  const subject = `Feedback von ${name}`;
-  const body = `${message}\n\nFreundliche Grüsse,\n${name}\n\nMeine E-Mail lautet: ${email}`;
+  try {
+    const response = await fetch('/sendMail', { // Annahme: Endpunkt ist '/sendMail'
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, message }),
+    });
 
-  // Öffnet das E-Mail-Programm mit den formatierten Daten
-  window.location.href = `mailto:nino.meier@swisscom.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const result = await response.json();
 
-  // Versteckt das Formular und zeigt die Erfolgsnachricht an
-  document.getElementById('contactForm').style.display = 'none';
-  document.getElementById('successMessage').style.display = 'flex';
+    if (response.ok) {
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('successMessage').style.display = 'flex';
+    } else {
+      console.error('Fehler:', result.error);
+    }
+  } catch (error) {
+    console.error('Fehler beim Senden der E-Mail:', error);
+  }
 }
+
 const projectData = {
   projekt1: {
     title: "Website",

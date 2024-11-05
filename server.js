@@ -80,5 +80,46 @@ app.post('/check-password', limiter, (req, res) => {
   }
 });
 
+
+// Importiere Nodemailer
+const nodemailer = require('nodemailer');
+
+// Funktion zum Versenden der E-Mail
+async function sendMail(req, res) {
+  const { name, email, message } = req.body; // Annahme: Daten kommen per POST-Request
+
+  // Betreff und Nachrichtenkörper formatieren
+  const subject = `Feedback von ${name}`;
+  const body = `${message}\n\nFreundliche Grüsse,\n${name}\n\nMeine E-Mail lautet: ${email}`;
+
+  // Konfiguration für den SMTP-Transport
+  let transporter = nodemailer.createTransport({
+    service: 'gmail', // oder ein anderer E-Mail-Anbieter
+    auth: {
+      user: 'deine.email@gmail.com', // Deine E-Mail-Adresse
+      pass: 'dein_passwort', // Dein E-Mail-Passwort (für Gmail eventuell App-Passwort nutzen)
+    },
+  });
+
+  try {
+    // Sende die E-Mail
+    await transporter.sendMail({
+      from: email,
+      to: 'nino.meier@swisscom.com', // Zieladresse
+      subject: subject,
+      text: body,
+    });
+
+    // Antwort an den Client senden
+    res.json({ message: 'E-Mail erfolgreich versendet!' });
+  } catch (error) {
+    console.error('Fehler beim Senden der E-Mail:', error);
+    res.status(500).json({ error: 'E-Mail konnte nicht gesendet werden.' });
+  }
+}
+
+module.exports = sendMail;
+
 // Start Server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+

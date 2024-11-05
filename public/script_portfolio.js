@@ -110,32 +110,7 @@ document.querySelector('.profile-image a').addEventListener('click', function (e
   });
 });
 
-async function sendMail() {
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
 
-  try {
-    const response = await fetch('/sendMail', { // Annahme: Endpunkt ist '/sendMail'
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name, email, message }),
-    });
-
-    const result = await response.json();
-
-    if (response.ok) {
-      document.getElementById('contactForm').style.display = 'none';
-      document.getElementById('successMessage').style.display = 'flex';
-    } else {
-      console.error('Fehler:', result.error);
-    }
-  } catch (error) {
-    console.error('Fehler beim Senden der E-Mail:', error);
-  }
-}
 
 const projectData = {
   projekt1: {
@@ -386,3 +361,29 @@ window.addEventListener('load', function() {
   loadingScreen.style.opacity = '0'; // Für sanftes Ausblenden
   setTimeout(() => loadingScreen.style.display = 'none', 500); // Versteckt nach dem Ausblenden
 });
+
+// Funktion zum Senden der E-Mail
+async function sendMail() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  try {
+    const response = await fetch('/sendMail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    if (response.ok) {
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('successMessage').style.display = 'flex';
+    } else {
+      console.error('Fehler beim Senden der E-Mail:', await response.json());
+    }
+  } catch (error) {
+    console.error('Fehler beim Senden der E-Mail:', error);
+  }
+}

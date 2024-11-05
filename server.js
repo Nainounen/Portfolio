@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
 const path = require('path');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const app = express();
@@ -80,15 +80,10 @@ app.post('/check-password', limiter, (req, res) => {
   }
 });
 
-
-// Importiere Nodemailer
-const nodemailer = require('nodemailer');
-
 // Funktion zum Versenden der E-Mail
-async function sendMail(req, res) {
-  const { name, email, message } = req.body; // Annahme: Daten kommen per POST-Request
+app.post('/sendMail', async (req, res) => {
+  const { name, email, message } = req.body;
 
-  // Betreff und Nachrichtenkörper formatieren
   const subject = `Feedback von ${name}`;
   const body = `${message}\n\nFreundliche Grüsse,\n${name}\n\nMeine E-Mail lautet: ${email}`;
 
@@ -102,13 +97,12 @@ async function sendMail(req, res) {
       pass: 'cf121ca3ce80801f39990a73f4430464', // Ersetze mit deinem geheimen Mailjet-Schlüssel
     },
   });
-  
 
   try {
     // Sende die E-Mail
     await transporter.sendMail({
       from: email,
-      to: 'nino.meier@swisscom.com', // Zieladresse
+      to: 'nino.meier@swisscom.com',
       subject: subject,
       text: body,
     });
@@ -119,10 +113,7 @@ async function sendMail(req, res) {
     console.error('Fehler beim Senden der E-Mail:', error);
     res.status(500).json({ error: 'E-Mail konnte nicht gesendet werden.' });
   }
-}
-
-module.exports = sendMail;
+});
 
 // Start Server
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
+app.listen(PORT, () => console.log(`Server läuft auf Port ${PORT}`));

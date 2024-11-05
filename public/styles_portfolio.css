@@ -7,9 +7,6 @@ body {
   position: relative;
 }
 
-
-
-
 /* Hero Section */
 .hero-section {
   text-align: center;
@@ -41,7 +38,6 @@ body {
   object-fit: cover; /* Bild füllt die Fläche */
 }
 
-
 /* Hintergrund Canvas für 3D Objekte */
 #background-canvas {
   position: fixed;
@@ -53,21 +49,7 @@ body {
   pointer-events: none;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#background-image{
+#background-image {
   position:fixed;
   top: 0;
   left: 0;
@@ -81,6 +63,7 @@ body {
   z-index: -2; /* Zwischen Asteroiden und Inhalt */
   
 }
+
 #layer{
   position:fixed;
   top: 0;
@@ -96,19 +79,6 @@ body {
   
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Social Navigation */
 .social-nav {
@@ -177,9 +147,6 @@ body {
   
 }
 
-
-
-
 /* Link List */
 .link-list {
   list-style: none;
@@ -240,29 +207,12 @@ body {
   transition: transform 300ms ease, filter 300ms ease;
 }
 
-
-
-
 .link-item a:hover .link-text {
   opacity: 1; 
   transform: translateX(40px); /* Text beim Hover sichtbar machen */
   filter: drop-shadow(0px 0px 2px rgb(112, 0, 192)) drop-shadow(0px 0px 2px rgb(112, 0, 192));
   transition: transform 300ms ease, filter 300ms ease;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .cv-container {
@@ -356,13 +306,9 @@ body {
   margin-bottom: 8px; /* Abstand zwischen Skill-Name und Skill-Bar */
 }
 
-
-
 .cv-container > div {
   margin-bottom: 30px;
 }
-
-
 
 .certificates {
   margin-bottom: 30px;
@@ -404,23 +350,6 @@ body {
   text-decoration: underline;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .education {
   grid-row: span 2;
   position: relative;
@@ -458,7 +387,6 @@ body {
 }
 
 
-
 .timeline-marker {
   position: relative;
   display: flex;
@@ -493,7 +421,6 @@ body {
   margin: 0;
   color: #e0e0e0;
 }
-
 
 
 .motivation-section {
@@ -645,14 +572,6 @@ body {
   line-height: 1;
 }
 
-
-
-
-
-
-
-
-
 /* Statusanzeige als ovales Rechteck */
 .status-dot {
   display: inline-block;
@@ -679,11 +598,6 @@ body {
   box-shadow: 0px 0px 22px rgba(255, 0, 0, 0.521);
 
 }
-
-
-
-
-
 
 /* Projekte-Container für die Anordnung */
 .projects-container {
@@ -735,9 +649,6 @@ body {
   text-align: center;
 }
 
-
-
-
 /* Overlay für die vollständige Verdunkelung des Hintergrunds */
 .overlay {
   display: none;
@@ -771,7 +682,6 @@ body {
   overflow: hidden; /* Verhindert das Scrollen des gesamten Panels */
 }
 
-
 .close-btn {
   position: absolute;
   top: 15px;
@@ -782,7 +692,6 @@ body {
   cursor: pointer;
   color: #e0e0e0;
 }
-
 
 /* Textbereich auf der linken Seite des großen Panels */
 .expanded-content {
@@ -847,8 +756,6 @@ body {
   /* Entferne die maximale Höhe und das Scrollen */
 }
 
-
-
 /* Stil für den Ladebildschirm */
 #loading-screen {
   position: fixed;
@@ -891,4 +798,188 @@ body {
 @keyframes load {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  /* Allgemeine Einstellungen für die mobile Ansicht */
+  body {
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Navigation (social-nav) ausblenden */
+  .social-nav {
+    display: none;
+  }
+
+  /* Einheitliche Einstellungen für alle Boxen */
+  .hero-section, .contact-section, .motivation-section, .project-box, .about-me, .education, .skills, .languages, .certificates {
+    width: 90%; /* Lässt Platz an beiden Rändern */
+    max-width: 95%; /* Etwas Abstand für kleine Bildschirme */
+    margin: 20px auto; /* Zentriert das Element und sorgt für vertikalen Abstand */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Glas-Effekt */
+    backdrop-filter: blur(10px); /* Leichter Unschärfeeffekt */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .education-timeline::before {
+    height: 90%; /* Etwas mehr Platz für die Timeline */
+   
+ 
+  }
+  /* Spezifische Anpassungen für die Hero Section */
+  .hero-section {
+    text-align: center;
+    padding: 70px 10px;
+    color: #ffffff;
+    background-color: #121212c4;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+  }
+
+  /* Profilbild in der Hero Section */
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #444;
+    margin: 0 auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Projekte-Container - Einspaltig und zentriert */
+  .projects-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Eine Spalte für Mobilgeräte */
+    gap: 20px;
+    padding: 0;
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  /* Projekt-Boxen */
+  .project-box {
+    width: 100%;
+    max-width: 95%; /* Etwas Abstand an beiden Seiten */
+    padding: 15px;
+    margin: 0 auto;
+  }
+
+  /* CV-Container - Einspaltig und zentriert */
+  .cv-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  /* Sektionen im CV-Container - Zentrieren */
+  .about-me, .education, .skills, .languages, .certificates {
+    width: 100%;
+    max-width: 95%; /* Etwas Abstand an beiden Seiten */
+    padding: 15px;
+    margin: 0 auto;
+  }
+
+  /* Fähigkeiten-Sektion (Skills) */
+  .skills .skill {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .skill span {
+    display: inline-block;
+    width: 100%;
+    color: #e0e0e0;
+  }
+
+  .skill-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(112, 0, 192, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 5px;
+  }
+
+  .skill-level {
+    height: 100%;
+    background: linear-gradient(90deg, rgb(112, 0, 192), rgb(150, 0, 250));
+    border-radius: 20px;
+    transition: width 1s ease;
+  }
+
+  /* Motivation Section */
+  .motivation-section {
+    text-align: center;
+    width: 100%;
+   
+  }
+
+  .motivation-section h2 {
+    color: rgb(112, 0, 192);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+/* Kontaktaufnahme-Sektion */
+.contact-section {
+  width: 100%;
+  max-width: 500px; /* Optional: Begrenze die maximale Breite */
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.contact-section input,
+.contact-section textarea {
+  width: 100%; /* Volle Breite minus Innenabstand */
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  
+  color: #ffffff;
+  font-size: 1rem;
+  box-sizing: border-box; /* Stellt sicher, dass Padding die Breite nicht überschreitet */
+}
+
+.contact-section button {
+  background-color: rgb(112, 0, 192);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%; /* Volle Breite des Containers */
+  transition: background-color 0.3s ease;
+}
+
+.contact-section button:hover {
+  background-color: rgb(150, 0, 250);
+}
 }

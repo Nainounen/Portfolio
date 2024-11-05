@@ -86,11 +86,6 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix();
 });
 
-
-
-
-
-
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -114,7 +109,6 @@ document.querySelector('.profile-image a').addEventListener('click', function (e
     behavior: 'smooth'
   });
 });
-
 
 function sendMail() {
   const name = document.getElementById('name').value;
@@ -291,7 +285,6 @@ const projectData = {
     image: "img/bbzwnotion.png",
     status: "in-progress"
   },
-
 projekt5: {
   title: "Ai bauen",
   description: `<section id="ai-building-project">

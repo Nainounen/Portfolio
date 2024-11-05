@@ -94,12 +94,15 @@ async function sendMail(req, res) {
 
   // Konfiguration für den SMTP-Transport
   let transporter = nodemailer.createTransport({
-    service: 'gmail', // oder ein anderer E-Mail-Anbieter
+    host: 'in-v3.mailjet.com',
+    port: 587,
+    secure: false,
     auth: {
-      user: 'deine.email@gmail.com', // Deine E-Mail-Adresse
-      pass: 'dein_passwort', // Dein E-Mail-Passwort (für Gmail eventuell App-Passwort nutzen)
+      user: '280f1919f67a8d186cf38485006ee0fb', // Ersetze mit deinem öffentlichen Mailjet-Schlüssel
+      pass: 'cf121ca3ce80801f39990a73f4430464', // Ersetze mit deinem geheimen Mailjet-Schlüssel
     },
   });
+  
 
   try {
     // Sende die E-Mail

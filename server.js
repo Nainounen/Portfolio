@@ -98,14 +98,13 @@ app.post('/sendMail', async (req, res) => {
     },
   });
 
-  try {
-    // Sende die E-Mail
-    await transporter.sendMail({
-      from: email,
-      to: 'nino.meier@swisscom.com',
-      subject: subject,
-      text: body,
-    });
+  await transporter.sendMail({
+    from: 'home.ninomeier@gmail.com', // Verifizierte Absenderadresse, die bei Mailjet eingerichtet ist
+    to: 'nino.meier@swisscom.com', // Deine Adresse, um die Nachricht zu erhalten
+    subject: `Neue Nachricht von ${name}`,
+    text: `Name: ${name}\nE-Mail: ${email}\n\nNachricht:\n${message}`,
+  });
+  
 
     // Antwort an den Client senden
     res.json({ message: 'E-Mail erfolgreich versendet!' });

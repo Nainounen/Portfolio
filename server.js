@@ -11,7 +11,7 @@ const app = express();
 app.enable('trust proxy');
 
 const PORT = process.env.PORT || 3000;
-const PASSWORD = "F4stConn3ct!on";
+const PASSWORD = "F4stC0nn3ct!on";
 
 // Security headers
 app.use(helmet());

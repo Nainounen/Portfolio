@@ -1,5 +1,6 @@
 #!/bin/bash
 
+heroku login -i
 # Überprüfen, ob ein Kommentar übergeben wurde
 if [ -z "$1" ]; then
     echo "Bitte geben Sie einen Commit-Kommentar an."

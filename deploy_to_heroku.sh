@@ -13,7 +13,7 @@ mv .gitignore .gitignore_backup
 echo "Pushing zu Heroku ohne .gitignore..."
 git add .
 git commit -m "$1"
-git push heroku master
+git push https://git.heroku.com/portfolio-nino-meier.git master
 
 # .gitignore-Datei wiederherstellen
 mv .gitignore_backup .gitignore

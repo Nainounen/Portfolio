@@ -1,9 +1,13 @@
 #!/bin/bash
 
 # .env-Datei laden
+# .env-Datei laden
 if [ -f .env ]; then
-    export $(cat .env | xargs)
+    source .env
 fi
+
+echo "HEROKU_API_KEY: $HEROKU_API_KEY"
+echo "GITHUB_API_TOKEN: $GITHUB_API_TOKEN"
 
 # Überprüfen, ob das HEROKU_API_KEY und GITHUB_API_TOKEN gesetzt sind
 if [ -z "$HEROKU_API_KEY" ] || [ -z "$GITHUB_API_TOKEN" ]; then

@@ -1,6 +1,10 @@
 #!/bin/bash
 
-heroku login -i
+# .env-Datei laden
+if [ -f .env ]; then
+    export $(cat .env | xargs)
+fi
+
 # Überprüfen, ob ein Kommentar übergeben wurde
 if [ -z "$1" ]; then
     echo "Bitte geben Sie einen Commit-Kommentar an."
@@ -13,7 +17,7 @@ mv .gitignore .gitignore_backup
 # Dateien zu Heroku pushen mit einer übergebenen Commit-Message
 git add .
 git commit -m "$1"
-git push heroku master
+git push https://heroku:$HEROKU_API_KEY@git.heroku.com/portfolio-nino-meier master
 
 # .gitignore-Datei wiederherstellen
 mv .gitignore_backup .gitignore

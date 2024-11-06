@@ -10,5 +10,5 @@ public/img
 public/logos/004-cv.svg
 public/Zertifikate
 
-
+deploy_to_heroku.sh
 

@@ -1,15 +1,7 @@
 #!/bin/bash
 
-# .env-Datei laden
-if [ -f .env ]; then
-    export $(cat .env | xargs)
-fi
-
-# Überprüfen, ob das HEROKU_API_KEY gesetzt ist
-if [ -z "$HEROKU_API_KEY" ]; then
-    echo "Fehler: HEROKU_API_KEY ist nicht gesetzt."
-    exit 1
-fi
+# API-Token direkt im Skript (Achtung: Sicherheitsrisiko!)
+HEROKU_API_KEY="HRKU-2d4f80be-cf1e-4e60-ad73-b5689fd5cd27"
 
 # Überprüfen, ob ein Kommentar übergeben wurde
 if [ -z "$1" ]; then
@@ -26,7 +18,7 @@ echo "Pushing zu: https://heroku:$HEROKU_API_KEY@git.heroku.com/portfolio-nino-m
 # Dateien zu Heroku pushen mit einer übergebenen Commit-Message
 git add .
 git commit -m "$1"
-git push https://heroku:$HEROKU_API_KEY@git.heroku.com/portfolio-nino-meier.git master
+git push https://heroku:$HEROKU_API_KEY@git.heroku.com/portfolio-nino-meier.git main
 
 # .gitignore-Datei wiederherstellen
 mv .gitignore_backup .gitignore

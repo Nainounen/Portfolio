@@ -18,7 +18,7 @@ echo "Pushing zu: https://heroku:$HEROKU_API_KEY@git.heroku.com/portfolio-nino-m
 # Dateien zu Heroku pushen mit einer übergebenen Commit-Message
 git add .
 git commit -m "$1"
-git push https://heroku:$HEROKU_API_KEY@git.heroku.com/portfolio-nino-meier.git main
+git push https://heroku:$HEROKU_API_KEY@git.heroku.com/portfolio-nino-meier.git master
 
 # .gitignore-Datei wiederherstellen
 mv .gitignore_backup .gitignore

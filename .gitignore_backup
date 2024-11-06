@@ -1,0 +1,14 @@
+
+.env
+
+node_modules/
+
+
+
+public/files
+public/img
+public/logos/portfolio.ico
+public/Zertifikate
+
+deploy_to_heroku.sh
+

@@ -996,35 +996,59 @@ body {
 }
 }
 
-
-
-.linkedin-wrapper {
+.split-button-wrapper {
   position: absolute;
-  top: 30px; /* Abstand vom oberen Rand */
-  right: 30px; /* Abstand vom rechten Rand */
- 
-  z-index: 1000; /* Stellt sicher, dass der Button über anderen Elementen liegt */
+  top: 20px; /* Abstand vom oberen Rand */
+  right: 20px; /* Abstand vom rechten Rand */
+  z-index: 1000; /* Stellt sicher, dass es über anderen Elementen liegt */
 }
 
-.linkedin-button {
+.split-button {
   display: flex;
-  align-items: center;
-  padding: 5px 20px;
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  text-decoration: none;
   border-radius: 30px;
+  overflow: hidden;
+  background-color: rgb(60, 60, 60);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.split-button:hover{
+  background-color: rgb(107, 92, 117);
+}
+.half-button {
+  flex: 1;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
   font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.linkedin-button:hover {
-  background-color: rgb(150, 0, 250);
-  transform: scale(1.05);
-}
-
-.linkedin-icon {
-  height: 50px;
+  color: #fff;
   
 }
 
+.half-button:hover {
+  transform: scale(1.05);
+ 
+}
+
+.linkedin {
+  background-color: rgb(150, 0, 250);
+  color: #fff;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+
+}
+
+.github {
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.github img {
+  height: 24px;
+}
+
+.linkedin img {
+  height: 45px;
+}

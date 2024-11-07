@@ -387,3 +387,69 @@ async function sendMail() {
     console.error('Fehler beim Senden der E-Mail:', error);
   }
 }
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const password = sessionStorage.getItem('userPassword'); // Holt das Passwort aus sessionStorage
+
+  if (password) {
+    console.log("Passwort aus sessionStorage abgerufen:", password);
+    loadContent(password); // Ruft die Funktion zum Laden des Inhalts auf
+  } else {
+    console.error("Kein Passwort im sessionStorage gefunden. Zugriff verweigert.");
+    // Option: Weiterleitung zur Login-Seite oder Anzeige einer Fehlermeldung
+    window.location.href = "/index.html"; // Zurück zur Login-Seite leiten
+  }
+});
+
+async function loadContent(password) {
+  try {
+    const response = await fetch('/get-content', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+
+      // Überprüfen und Einfügen des Inhalts für "Über mich"
+      if (data.about) {
+        document.querySelector('.about-me').innerHTML = `
+          <h2>Über mich</h2>
+          <p>${data.about}</p>
+        `;
+      } else {
+        console.warn("'about'-Inhalt nicht gefunden.");
+      }
+
+      // Überprüfen und Einfügen des Inhalts für das Motivationsschreiben
+      if (data.motivation) {
+        document.querySelector('.motivation-content').innerHTML = `
+          
+          ${data.motivation}
+        `;
+      } else {
+        console.warn("'motivation'-Inhalt nicht gefunden.");
+      }
+
+      // Überprüfen und Einfügen des Inhalts für den Namen
+      if (data.name) {
+        document.querySelector('.personal-name').innerHTML = data.name;
+      } else {
+        console.warn("'name'-Inhalt nicht gefunden.");
+      }
+
+    } else {
+      console.error('Inhalt nicht gefunden oder Fehler beim Abrufen:', response.statusText);
+    }
+    
+  } catch (error) {
+    console.error('Fehler beim Laden des Inhalts:', error);
+  }
+}
+
+
+

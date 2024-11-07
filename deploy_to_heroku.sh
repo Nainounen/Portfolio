@@ -12,15 +12,15 @@ fi
 # .gitignore-Datei umbenennen, um sie vorübergehend zu entfernen
 mv .gitignore .gitignore_backup
 
-# URL überprüfen und ausgeben
+
 echo "Pushing zu: https://heroku:$HEROKU_API_KEY@git.heroku.com/portfolio-nino-meier.git"
 
-# Dateien zu Heroku pushen mit einer übergebenen Commit-Message
+
 git add .
 git commit -m "$1"
 git push https://heroku:$HEROKU_API_KEY@git.heroku.com/portfolio-nino-meier.git master
 
-# .gitignore-Datei wiederherstellen
+
 mv .gitignore_backup .gitignore
 
 

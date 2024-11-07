@@ -15,15 +15,24 @@ function checkPassword() {
     body: JSON.stringify({ password })
   })
     .then(response => response.json().then(data => ({ status: response.status, body: data })))
-    .then(({ status, body }) => handlePasswordResponse(status, body, passwordInput, errorMessage))
-    .catch(error => console.error('Error:', error));
+    .then(({ status, body }) => handlePasswordResponse(status, body, passwordInput, errorMessage, password))
+       
+    
+    .catch(error => {
+      console.error('Fehler bei der Passwortüberprüfung:', error);
+    });
 }
 
-function handlePasswordResponse(status, body, passwordInput, errorMessage) {
+
+
+function handlePasswordResponse(status, body, passwordInput, errorMessage, password) {
   if (status === 200 && body.success) {
     passwordInput.style.display = "none";
     errorMessage.style.display = "none";
-    startLoadingSequence();
+    sessionStorage.setItem('userPassword', password);
+    startLoadingSequence(() => {
+      startSite(); // Seite nach dem Laden des Inhalts weiterleiten
+    });
   } else {
     displayErrorMessage(status, body, passwordInput, errorMessage);
   }
@@ -55,11 +64,11 @@ const quickCodeMessages = [
 
 let index = 0, loadingBarAdded = false;
 
-function startLoadingSequence() {
-  typeMessage();
+function startLoadingSequence(callback) {
+  typeMessage(callback);
 }
 
-function typeMessage() {
+function typeMessage(callback) {
   if (index < loadingMessages.length) {
     const message = loadingMessages[index];
     let charIndex = 0;
@@ -70,34 +79,30 @@ function typeMessage() {
         clearInterval(typeInterval);
         consoleText.innerHTML += "\n";
         index++;
-        (index < loadingMessages.length) ? setTimeout(typeMessage, Math.random() * 1000 + 500) : addLoadingBar();
+        (index < loadingMessages.length) ? setTimeout(() => typeMessage(callback), Math.random() * 1000 + 500) : addLoadingBar(callback);
       }
     }, 50);
   }
 }
 
-function addLoadingBar() {
+function addLoadingBar(callback) {
   if (!loadingBarAdded) {
     const loadingBar = document.createElement("div");
     loadingBar.className = "loading-bar";
     consoleText.appendChild(loadingBar);
     loadingBarAdded = true;
-    loadingBar.addEventListener("animationend", startSite);
+    loadingBar.addEventListener("animationend", () => {
+      if (callback) callback(); // Nach der Ladeanimation den Inhalt laden
+    });
   }
 }
 
-function showQuickCode() {
-  consoleText.innerHTML = "";
-  cursor.style.display = "none";
-  quickCodeMessages.forEach((message, i) => setTimeout(() => consoleText.innerHTML += message + "\n", i * 100));
-  setTimeout(() => {
-    document.getElementById("console").classList.add("fade-out");
-    setTimeout(startSite, 1000);
-  }, quickCodeMessages.length * 100 + 500);
-}
 
+
+// Funktion zur Weiterleitung auf die Portfolio-Seite
 function startSite() {
   window.location.href = "/portfolioindex.html";
 }
+
 
 document.addEventListener("DOMContentLoaded", () => cursor.style.display = "none");

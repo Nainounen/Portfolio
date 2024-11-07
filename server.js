@@ -5,13 +5,27 @@ const path = require('path');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const nodemailer = require('nodemailer');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
 app.enable('trust proxy');
 
 const PORT = process.env.PORT || 3000;
-const PASSWORD = process.env.PASSWORD;
+
+// Verbinde dich mit der Datenbank
+mongoose.connect(process.env.DB_URI)
+  .then(() => console.log('Datenbank verbunden'))
+  .catch(err => console.error('Fehler bei der Verbindung zur Datenbank:', err));
+
+// Schema für Inhalte
+const ContentSchema = new mongoose.Schema({
+  password: String, // Das Passwort zur Authentifizierung
+  section: String,  // "about" oder "motivation"
+  content: String,  // Der Inhalt
+});
+
+const Content = mongoose.model('Content', ContentSchema);
 
 // Security headers
 app.use(helmet());
@@ -70,13 +84,40 @@ const limiter = rateLimit({
   handler: (req, res) => res.status(429).json({ message: "Too many login attempts. Please try again in 15 minutes." })
 });
 
-app.post('/check-password', limiter, (req, res) => {
+// Route zur Prüfung des Passworts
+app.post('/check-password', async (req, res) => {
   const { password } = req.body;
-  if (password === PASSWORD) {
-    req.session.authenticated = true;
-    res.json({ success: true });
-  } else {
-    res.json({ success: false });
+  try {
+    const content = await Content.findOne({ password });
+    if (content) {
+      req.session.authenticated = true;
+      res.json({ success: true });
+    } else {
+      res.json({ success: false });
+    }
+  } catch (error) {
+    console.error('Fehler beim Überprüfen des Passworts:', error);
+    res.status(500).json({ message: 'Serverfehler' });
+  }
+});
+
+// Route zum Abrufen des Inhalts
+app.post('/get-content', async (req, res) => {
+  const { password } = req.body;
+  try {
+    const content = await Content.find({ password });
+    if (content.length > 0) {
+      const result = content.reduce((acc, item) => {
+        acc[item.section] = item.content;
+        return acc;
+      }, {});
+      res.json(result);
+    } else {
+      res.status(404).json({ message: 'Kein Inhalt für dieses Passwort gefunden' });
+    }
+  } catch (error) {
+    console.error('Fehler beim Abrufen des Inhalts:', error);
+    res.status(500).json({ message: 'Serverfehler' });
   }
 });
 
@@ -105,7 +146,6 @@ app.post('/sendMail', async (req, res) => {
       to: 'nino.meier@swisscom.com', // Deine Adresse, um die Nachricht zu erhalten
       subject: `Feedback von ${name}`,
       text: `Name: ${name}\nE-Mail: ${email}\n\nNachricht:\n${message}`,
-    
     });
 
     // Antwort an den Client senden

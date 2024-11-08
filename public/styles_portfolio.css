@@ -24,12 +24,36 @@ body {
 .hero-section h2{
   font-size: 60px;
 }
-
-.hero-section p{
-  font-size: 40px
+.personal-vorname{
+  display: inline;
+}
+.personal-nachname{
+  display: inline;
+}
+.formtext{
+  display: inline;
+  margin-bottom: 20px;
+  text-align: right;
 }
 
+.intro p{
+  font-weight: bold;
+  display: inline;
+  
+}
+
+.intro{
+  margin-bottom: 20px;
+}
+
+.hero-section p{
+  display: inline;
+  margin: 0;
+  font-size: 30px
+}
 #herop2{
+  margin-top: 20px;
+  display: block;
   font-size: 20px;
   color:#a0a0a0;
 }
@@ -450,27 +474,28 @@ body {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 20px;
-  letter-spacing: 1px;
   text-align: center;
+  letter-spacing: 1px;
 }
 
 .motivation-content p {
-  color: #e0e0e0; /* Angenehme Grau-Ton für Text */
+  color: #ffffff;
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 15px;
 }
 
-.motivation-content p:first-of-type {
-  font-weight: bold;
-  color: #ffffff; /* Weiß für den Anrede-Absatz */
+#schlusssatz {
+  display: inline;
+  color: #ffffff;
 }
 
-.motivation-content p:last-of-type {
+#motivationende {
   font-weight: bold;
-  color: #ffffff; /* Weiß für den Abschieds-Absatz */
+  color: #ffffff;
   text-align: right;
 }
+
 /* Erfolgsnachricht-Animation */
 @keyframes fadeIn {
   0% {
@@ -514,12 +539,25 @@ body {
 .contact-form {
   display: flex;
   flex-direction: column;
+  
 }
 
+.formwithoutbutton{
+  display: flex;
+  flex-direction: column;
+  
+  background-color: rgba(255, 255, 255, 0.048);
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+}
 .contact-form label {
   color: #e0e0e0;
   margin-bottom: 5px;
   font-weight: bold;
+}
+.contact-form p{
+  display: inline;
 }
 
 .contact-form input,
@@ -539,6 +577,8 @@ body {
   border: none;
   border-radius: 8px;
   padding: 12px;
+  margin-left: 10px;
+  margin-right: 10px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -1053,15 +1093,3 @@ body {
   height: 45px;
 }
 
-.personal-name {
-  font-size: 40px;
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 10px 20px;
-  border-radius: 15px;
-  box-shadow: 0 0px 8px rgba(255, 255, 255, 0.795);
-  font-weight: bold;
-  backdrop-filter: blur(5px);
-  text-align: center;
-  display: inline-block;
-  
-}

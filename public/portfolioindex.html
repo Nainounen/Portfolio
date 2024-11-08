@@ -81,10 +81,13 @@
       <img src="img/Profilbild.jpg" alt="Profilbild">
     </div>
     <h2>Nino Meier</h2>
-    <p>Willkommen auf meinem Portfolio</p>
-    <div class="personal-name"></div>
-    <p id="herop2">Entdecken Sie meinen Lebenslauf, mein Motivationsschreiben und Projekte.</p>
+    <div class="herotext">
+    <p>Hey </p>
+      <p class="personal-vorname"></p><p>, willkommen auf meinem Portfolio! Ich freue mich, dass du vorbeischaust.</p>
+    
+    <p id="herop2">Entdecke meinen Lebenslauf, mein Motivationsschreiben und Projekte.</p>
   </div>
+</div>
 <div id="background-image"></div>
 <div id="layer"></div>
   <!-- Background Canvas für die 3D Objekte -->
@@ -249,10 +252,19 @@
   </div>
 </div>
 
-  <section id="motivation" class="motivation-section">
-    <h2>Motivationsschreiben</h2>
-    <div class="motivation-content"></div>
-  </section>
+<section id="motivation" class="motivation-section">
+  <h2>Motivationsschreiben</h2>
+  <div class="intro">
+    <p>Hallo </p>
+    <p class="personal-vorname"></p>
+  </div>
+  <div class="motivation-content"></div>
+  <p id="schlusssatz">
+    Ich hoffe, ich konnte dich, <span class="personal-vorname"></span>, von mir überzeugen und freue mich auf ein ausführliches Feedback.
+  </p>
+  <p id="motivationende">Freundliche Grüsse <br>Nino Meier</p>
+</section>
+
 
   <section id="contact" class="contact-section">
     <h2>Kontaktaufnahme</h2>
@@ -270,18 +282,20 @@
     
     
     <form class="contact-form" id="contactForm">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required placeholder="Ihr Name">
-      
-      <label for="email">E-Mail</label>
-      <input type="email" id="email" name="email" required placeholder="Ihre E-Mail-Adresse">
-      
-      <label for="message">Nachricht</label>
+    
+    
+     <div class="formwithoutbutton">
+      <p>Hallo Nino</p>
       <textarea id="message" name="message" rows="5" required placeholder="Ihre Nachricht oder Ihr Feedback"></textarea>
-      
+      <div class="formtext">
+      <p>Freundliche Grüsse <br></p>
+      <p class="personal-vorname"></p>
+      <p class="personal-nachname"></p>
+    </div>
+  </div>
       <button type="button" onclick="sendMail()">Senden</button>
-
     </form>
+    
   
     <!-- Bestätigung mit grossem Haken -->
     <div id="successMessage" class="success-message" style="display: none;">

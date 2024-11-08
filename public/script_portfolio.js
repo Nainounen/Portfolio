@@ -362,34 +362,8 @@ window.addEventListener('load', function() {
   setTimeout(() => loadingScreen.style.display = 'none', 500); // Versteckt nach dem Ausblenden
 });
 
-// Funktion zum Senden der E-Mail
-async function sendMail() {
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
-
-  try {
-    const response = await fetch('/sendMail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name, email, message }),
-    });
-
-    if (response.ok) {
-      document.getElementById('contactForm').style.display = 'none';
-      document.getElementById('successMessage').style.display = 'flex';
-    } else {
-      console.error('Fehler beim Senden der E-Mail:', await response.json());
-    }
-  } catch (error) {
-    console.error('Fehler beim Senden der E-Mail:', error);
-  }
-}
-
-
-
+// Globale Variable zum Speichern der geladenen Daten
+let data = {};
 
 document.addEventListener('DOMContentLoaded', () => {
   const password = sessionStorage.getItem('userPassword'); // Holt das Passwort aus sessionStorage
@@ -399,7 +373,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loadContent(password); // Ruft die Funktion zum Laden des Inhalts auf
   } else {
     console.error("Kein Passwort im sessionStorage gefunden. Zugriff verweigert.");
-    // Option: Weiterleitung zur Login-Seite oder Anzeige einer Fehlermeldung
     window.location.href = "/index.html"; // Zurück zur Login-Seite leiten
   }
 });
@@ -413,7 +386,7 @@ async function loadContent(password) {
     });
 
     if (response.ok) {
-      const data = await response.json();
+      data = await response.json(); // Speichere die Daten in der globalen Variable
 
       // Überprüfen und Einfügen des Inhalts für "Über mich"
       if (data.about) {
@@ -428,7 +401,6 @@ async function loadContent(password) {
       // Überprüfen und Einfügen des Inhalts für das Motivationsschreiben
       if (data.motivation) {
         document.querySelector('.motivation-content').innerHTML = `
-          
           ${data.motivation}
         `;
       } else {
@@ -436,18 +408,71 @@ async function loadContent(password) {
       }
 
       // Überprüfen und Einfügen des Inhalts für den Namen
-      if (data.name) {
-        document.querySelector('.personal-name').innerHTML = data.name;
+      if (data.vorname) {
+        document.querySelectorAll('.personal-vorname').forEach(element => {
+          element.innerHTML = data.vorname;
+        });
       } else {
-        console.warn("'name'-Inhalt nicht gefunden.");
+        console.warn("'vorname'-Inhalt nicht gefunden.");
       }
+
+      if (data.nachname) {
+        document.querySelectorAll('.personal-nachname').forEach(element => {
+          element.innerHTML = data.nachname;
+        });
+      } else {
+        console.warn("'nachname'-Inhalt nicht gefunden.");
+      }
+
+      
 
     } else {
       console.error('Inhalt nicht gefunden oder Fehler beim Abrufen:', response.statusText);
     }
-    
+
   } catch (error) {
     console.error('Fehler beim Laden des Inhalts:', error);
+  }
+}
+
+async function sendMail() {
+  // Vorname, Nachname und E-Mail aus den globalen Daten abrufen
+  const vorname = data.vorname || 'Unbekannt';
+  const nachname = data.nachname || 'Unbekannt';
+  const email = data.mail || 'keinemail@example.com'; // E-Mail-Feld hinzufügen, wenn es nicht existiert
+
+  // Nachricht aus dem Eingabefeld holen
+  const message = document.getElementById('message').value;
+
+  // Erstelle die Nachricht mit den zusätzlichen Daten
+  const completeMessage = `
+  Hallo Nino
+  
+  ${message}
+
+  -----------------------------
+  Freundliche Grüsse
+  ${vorname} ${nachname}
+`;
+
+  try {
+    // Sende die E-Mail
+    const response = await fetch('/sendMail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: `${vorname} ${nachname}`, email, message: completeMessage }),
+    });
+
+    if (response.ok) {
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('successMessage').style.display = 'flex';
+    } else {
+      console.error('Fehler beim Senden der E-Mail:', await response.json());
+    }
+  } catch (error) {
+    console.error('Fehler beim Senden der E-Mail:', error);
   }
 }
 

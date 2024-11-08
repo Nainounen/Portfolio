@@ -377,6 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// Funktion zum Laden des Inhalts basierend auf dem Passwort
 async function loadContent(password) {
   try {
     const response = await fetch('/get-content', {
@@ -386,9 +387,17 @@ async function loadContent(password) {
     });
 
     if (response.ok) {
-      data = await response.json(); // Speichere die Daten in der globalen Variable
+      const result = await response.json(); // JSON-Daten direkt parsen
+      console.log('Daten erfolgreich geladen:', result);
 
-      // Überprüfen und Einfügen des Inhalts für "Über mich"
+      // Überprüfen, ob die Daten verschachtelt sind
+      if (result.data) {
+        data = result.data; // Speichere nur den verschachtelten Inhalt
+      } else {
+        data = result; // Falls es nicht verschachtelt ist, speichere das gesamte Objekt
+      }
+
+      // Beispiel für das Einfügen der Inhalte in die Seite
       if (data.about) {
         document.querySelector('.about-me').innerHTML = `
           <h2>Über mich</h2>
@@ -398,16 +407,12 @@ async function loadContent(password) {
         console.warn("'about'-Inhalt nicht gefunden.");
       }
 
-      // Überprüfen und Einfügen des Inhalts für das Motivationsschreiben
       if (data.motivation) {
-        document.querySelector('.motivation-content').innerHTML = `
-          ${data.motivation}
-        `;
+        document.querySelector('.motivation-content').innerHTML = data.motivation;
       } else {
         console.warn("'motivation'-Inhalt nicht gefunden.");
       }
 
-      // Überprüfen und Einfügen des Inhalts für den Namen
       if (data.vorname) {
         document.querySelectorAll('.personal-vorname').forEach(element => {
           element.innerHTML = data.vorname;
@@ -424,16 +429,20 @@ async function loadContent(password) {
         console.warn("'nachname'-Inhalt nicht gefunden.");
       }
 
-      
-
     } else {
+      // Fehlerbehandlung bei einer nicht erfolgreichen Antwort
       console.error('Inhalt nicht gefunden oder Fehler beim Abrufen:', response.statusText);
     }
-
   } catch (error) {
+    // Fehlerbehandlung bei einem Verbindungsfehler oder JSON-Parsing-Fehler
     console.error('Fehler beim Laden des Inhalts:', error);
   }
 }
+
+
+
+
+
 
 async function sendMail() {
   // Vorname, Nachname und E-Mail aus den globalen Daten abrufen

@@ -101,17 +101,14 @@ app.post('/check-password', async (req, res) => {
   }
 });
 
-// Route zum Abrufen des Inhalts
 app.post('/get-content', async (req, res) => {
   const { password } = req.body;
   try {
-    const content = await Content.find({ password });
-    if (content.length > 0) {
-      const result = content.reduce((acc, item) => {
-        acc[item.section] = item.content;
-        return acc;
-      }, {});
-      res.json(result);
+    const content = await Content.findOne({ password });
+    console.log('Gefundener Inhalt:', content);
+
+    if (content) {
+      res.json(content); // Sende den gesamten Inhalt zurück
     } else {
       res.status(404).json({ message: 'Kein Inhalt für dieses Passwort gefunden' });
     }
@@ -120,6 +117,11 @@ app.post('/get-content', async (req, res) => {
     res.status(500).json({ message: 'Serverfehler' });
   }
 });
+
+
+
+
+
 
 // Funktion zum Versenden der E-Mail
 app.post('/sendMail', async (req, res) => {
@@ -158,3 +160,6 @@ app.post('/sendMail', async (req, res) => {
 
 // Start Server
 app.listen(PORT, () => console.log(`Server läuft auf Port ${PORT}`));
+
+
+

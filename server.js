@@ -131,15 +131,18 @@ app.post('/sendMail', async (req, res) => {
   const body = `${message}\n\nFreundliche Grüsse,\n${name}\n\nMeine E-Mail lautet: ${email}`;
 
   // Konfiguration für den SMTP-Transport
+  // Stelle sicher, dass dies am Anfang deiner Datei steht
+
   let transporter = nodemailer.createTransport({
     host: 'in-v3.mailjet.com',
     port: 587,
     secure: false,
     auth: {
-      user: '280f1919f67a8d186cf38485006ee0fb', // Ersetze mit deinem öffentlichen Mailjet-Schlüssel
-      pass: 'cf121ca3ce80801f39990a73f4430464', // Ersetze mit deinem geheimen Mailjet-Schlüssel
+      user: process.env.MAILJET_USER, // Zugriff auf den öffentlichen Mailjet-Schlüssel
+      pass: process.env.MAILJET_PASS, // Zugriff auf den geheimen Mailjet-Schlüssel
     },
   });
+  
 
   try {
     // Sende die E-Mail

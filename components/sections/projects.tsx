@@ -4,6 +4,7 @@ import { Section } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import Image from "next/image";
 
 const projects = [
   {
@@ -12,7 +13,7 @@ const projects = [
     tags: ["NEXT.JS", "OPENAI", "PRISMA", "AWS"],
     github: "#",
     live: "#",
-    image: "/placeholder-project.jpg", // Replace with actual images
+    image: "/nextrack.jpg",
     year: "2024",
   },
   {
@@ -21,7 +22,16 @@ const projects = [
     tags: ["REACT", "NODE.JS", "MAPS API", "GITLAB CI/CD"],
     github: "#",
     live: "#",
-    image: "/placeholder-project.jpg",
+    image: "/projecthub.jpg",
+    year: "2024",
+  },
+  {
+    title: "A-TEAM",
+    description: "Workflow automation platform for Swisscom's Automation Team. Streamlines process automation, task management, and team collaboration.",
+    tags: ["NEXT.JS", "AUTOMATION", "WORKFLOWS", "API"],
+    github: "#",
+    live: "#",
+    image: "/ateam.jpg",
     year: "2024",
   },
   {
@@ -30,7 +40,7 @@ const projects = [
     tags: ["NEXT.JS", "NESTJS", "POSTGRESQL", "IAM"],
     github: "#",
     live: "#",
-    image: "/placeholder-project.jpg",
+    image: "/creative-studio.jpg",
     year: "2023-2024",
   },
   {
@@ -39,7 +49,7 @@ const projects = [
     tags: ["REACT", "NEXT.JS", "TAILWIND", "AGILE"],
     github: "#",
     live: "#",
-    image: "/placeholder-project.jpg",
+    image: "/sitelab.jpg",
     year: "2023-NOW",
   },
 ];
@@ -90,9 +100,6 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
     >
       {/* Image Container */}
       <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-muted mb-6 border border-border/50">
-        {/* Placeholder - replace with actual Next Image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary via-muted to-secondary/50 image-zoom" />
-        {/* 
         <Image
           src={project.image}
           alt={project.title}
@@ -100,13 +107,12 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           className="object-cover image-zoom"
           sizes="(max-width: 1024px) 100vw, 50vw"
         />
-        */}
         
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-60" />
         
         {/* Year Badge */}
-        <div className="absolute top-6 right-6 px-4 py-2 glass border border-border/50 text-xs font-medium tracking-widest uppercase">
+        <div className="absolute top-6 right-6 px-4 py-2 glass border border-border/50 text-xs font-medium tracking-widest uppercase z-10">
           {project.year}
         </div>
       </div>

@@ -35,7 +35,7 @@ export function FooterSection() {
               LET&apos;S WORK<br />TOGETHER
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Always bringing the fight. Interested in new challenges and opportunities.
+              Open to collaboration, innovation projects, and new opportunities in software development.
             </p>
             <div className="pt-4">
               <Button
@@ -43,7 +43,7 @@ export function FooterSection() {
                 className="uppercase tracking-wider text-xs bg-primary hover:bg-primary/90 px-8 py-6"
                 asChild
               >
-                <a href="mailto:your.email@example.com">
+                <a href="mailto:nino.meier@swisscom.com">
                   <Mail className="h-4 w-4 mr-2" />
                   Get In Touch
                 </a>
@@ -81,10 +81,10 @@ export function FooterSection() {
             {/* Copyright */}
             <div className="text-center space-y-2">
               <p className="text-xs tracking-widest text-muted-foreground uppercase">
-                © {new Date().getFullYear()} Your Name. All rights reserved.
+                © {new Date().getFullYear()} Nino Meier. All rights reserved.
               </p>
               <p className="text-[10px] text-muted-foreground">
-                Built with Next.js 16 · Tailwind CSS v4 · TypeScript
+                Built with Next.js 16 · Tailwind CSS v4 · TypeScript · Swisscom SiteLab
               </p>
             </div>
           </div>

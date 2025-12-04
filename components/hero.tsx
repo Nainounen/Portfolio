@@ -18,14 +18,14 @@ export function Hero() {
       {/* Left Vertical Text */}
       <div className="absolute left-6 top-1/2 -translate-y-1/2 hidden lg:block z-10">
         <p className="text-[10px] font-medium tracking-[0.3em] text-muted-foreground uppercase [writing-mode:vertical-lr] rotate-180">
-          Portfolio 2025
+          Swisscom · 2025
         </p>
       </div>
 
       {/* Right Vertical Text */}
       <div className="absolute right-6 top-1/2 -translate-y-1/2 hidden lg:block z-10">
         <p className="text-[10px] font-medium tracking-[0.3em] text-muted-foreground uppercase [writing-mode:vertical-lr] rotate-180">
-          Full Stack Developer
+          Application Developer
         </p>
       </div>
 
@@ -35,27 +35,27 @@ export function Hero() {
         <div className="flex items-center justify-center gap-3">
           <div className="h-px w-12 bg-primary" />
           <p className="text-xs tracking-[0.3em] text-primary uppercase font-medium">
-            Developer
+            Fullstack Developer
           </p>
           <div className="h-px w-12 bg-primary" />
         </div>
 
         {/* Main heading */}
         <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none">
-          YOUR NAME
+          NINO MEIER
         </h1>
         
         {/* Subtitle */}
         <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-light tracking-wide max-w-3xl mx-auto">
-          Redefining limits, building exceptional digital experiences,
+          Application Developer Apprentice at Swisscom,
           <br className="hidden sm:block" />
-          bringing it all in every project.
+          building modern web applications with innovation and precision.
         </p>
 
         {/* CTA or Additional Info */}
         <div className="pt-4">
           <p className="text-sm tracking-widest text-muted-foreground uppercase">
-            Based in Your Location
+            Based in Switzerland · SiteLab Team Lead
           </p>
         </div>
       </div>

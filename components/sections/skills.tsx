@@ -6,19 +6,19 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 const skillCategories = [
   {
     category: "FRONTEND",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "React Native"],
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Animations"],
   },
   {
     category: "BACKEND",
-    skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "Redis"],
+    skills: ["Node.js", "NestJS", "Prisma", "PostgreSQL", "Python"],
   },
   {
-    category: "TOOLS & PLATFORMS",
-    skills: ["Git", "Docker", "AWS", "Vercel", "Firebase"],
+    category: "CLOUD & DEVOPS",
+    skills: ["AWS (iAWS)", "GitLab CI/CD", "Docker", "IAM", "API Security"],
   },
   {
-    category: "OTHER",
-    skills: ["REST APIs", "GraphQL", "CI/CD", "Agile", "Testing"],
+    category: "AI & OTHER",
+    skills: ["OpenAI API", "RAG Systems", "Agile/Scrum", "Project Leadership", "C#/Java"],
   },
 ];
 

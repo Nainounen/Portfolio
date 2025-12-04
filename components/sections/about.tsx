@@ -21,9 +21,9 @@ export function AboutSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-secondary via-muted to-secondary/50 flex items-center justify-center">
                 <div className="text-center space-y-4">
                   <div className="w-32 h-32 rounded-full bg-primary/20 mx-auto flex items-center justify-center">
-                    <span className="text-4xl font-bold text-primary">YN</span>
+                    <span className="text-4xl font-bold text-primary">NM</span>
                   </div>
-                  <span className="text-sm text-muted-foreground uppercase tracking-wider">Your Photo Here</span>
+                  <span className="text-sm text-muted-foreground uppercase tracking-wider">Nino Meier</span>
                 </div>
               </div>
               {/*
@@ -62,66 +62,66 @@ export function AboutSection() {
             {/* Bio */}
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p className="text-lg">
-                <span className="text-foreground font-medium">Redefining limits</span>, building exceptional digital experiences, and bringing innovation to every project.
+                <span className="text-foreground font-medium">Application Developer Apprentice</span> at Swisscom, part of the Next Generation program and SiteLab team lead.
               </p>
               <p>
-                With expertise in modern web technologies, I create scalable and user-friendly applications that push boundaries. My passion lies in transforming complex problems into elegant solutions.
+                I work primarily with React, Next.js, Node.js, NestJS, and modern cloud infrastructure. As team lead of SiteLab—Swisscom&apos;s apprentice-driven web development team—I help design and build internal and external applications that support innovation and learning.
               </p>
               <p>
-                When I&apos;m not coding, you&apos;ll find me exploring cutting-edge technologies, contributing to open source, or sharing knowledge with the developer community.
+                My focus areas include fullstack engineering, AI integration, cloud architecture, and leading apprentice-driven projects like ProjectHub, Creative Studio, and NEXtrack.
               </p>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 pt-6">
               <div className="space-y-1">
-                <p className="text-3xl font-bold text-primary">5+</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider">Years Exp</p>
+                <p className="text-3xl font-bold text-primary">2nd</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider">Year Apprentice</p>
               </div>
               <div className="space-y-1">
-                <p className="text-3xl font-bold text-primary">50+</p>
+                <p className="text-3xl font-bold text-primary">10+</p>
                 <p className="text-xs text-muted-foreground uppercase tracking-wider">Projects</p>
               </div>
               <div className="space-y-1">
-                <p className="text-3xl font-bold text-primary">20+</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider">Clients</p>
+                <p className="text-3xl font-bold text-primary">17</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider">Years Old</p>
               </div>
             </div>
 
             {/* Timeline/Highlights */}
             <div className="space-y-6 pt-6 border-t border-border/50">
-              <h3 className="text-xl font-bold tracking-wider uppercase">Career Journey</h3>
+              <h3 className="text-xl font-bold tracking-wider uppercase">Journey</h3>
               <div className="space-y-6">
                 <div className="flex gap-6 group">
                   <div className="text-sm font-bold text-primary w-16 flex-shrink-0 uppercase tracking-wider">
                     2024
                   </div>
                   <div className="space-y-1 flex-1">
-                    <p className="font-semibold text-foreground">Senior Developer</p>
+                    <p className="font-semibold text-foreground">SiteLab Team Lead</p>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Leading projects and mentoring team members
+                      Leading Swisscom&apos;s apprentice web development team
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-6 group">
                   <div className="text-sm font-bold text-primary w-16 flex-shrink-0 uppercase tracking-wider">
-                    2022
+                    2023
                   </div>
                   <div className="space-y-1 flex-1">
-                    <p className="font-semibold text-foreground">Full Stack Developer</p>
+                    <p className="font-semibold text-foreground">Started at Swisscom</p>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Built multiple production applications
+                      Began 4-year Application Developer apprenticeship
                     </p>
                   </div>
                 </div>
                 <div className="flex gap-6 group">
                   <div className="text-sm font-bold text-primary w-16 flex-shrink-0 uppercase tracking-wider">
-                    2020
+                    2008
                   </div>
                   <div className="space-y-1 flex-1">
-                    <p className="font-semibold text-foreground">Started Journey</p>
+                    <p className="font-semibold text-foreground">Born in Switzerland</p>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Began professional development career
+                      Native German speaker, fluent in English
                     </p>
                   </div>
                 </div>

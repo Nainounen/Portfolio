@@ -46,7 +46,7 @@ export function Navigation() {
             onClick={() => scrollToSection("#home")}
             className="text-lg font-bold tracking-wider uppercase hover:text-primary transition-colors"
           >
-            <span className="text-primary">Y</span>N
+            <span className="text-primary">N</span>M
           </button>
 
           {/* Desktop Navigation */}

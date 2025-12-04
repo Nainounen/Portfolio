@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name - Portfolio",
-  description: "Full Stack Developer building exceptional digital experiences",
+  title: "Nino Meier - Portfolio",
+  description: "Application Developer Apprentice at Swisscom | SiteLab Team Lead | Building modern web applications with React, Next.js, and AI",
 };
 
 export default function RootLayout({

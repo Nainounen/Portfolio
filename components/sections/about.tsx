@@ -2,6 +2,7 @@
 
 import { Section } from "@/components/section";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import Image from "next/image";
 
 export function AboutSection() {
   const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation({ threshold: 0.3 });
@@ -17,24 +18,14 @@ export function AboutSection() {
             className={`relative ${imageVisible ? "animate-slide-in-left" : "opacity-0"}`}
           >
             <div className="relative aspect-[3/4] rounded-lg overflow-hidden border border-border/50">
-              {/* Placeholder - replace with actual image */}
-              <div className="absolute inset-0 bg-gradient-to-br from-secondary via-muted to-secondary/50 flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <div className="w-32 h-32 rounded-full bg-primary/20 mx-auto flex items-center justify-center">
-                    <span className="text-4xl font-bold text-primary">NM</span>
-                  </div>
-                  <span className="text-sm text-muted-foreground uppercase tracking-wider">Nino Meier</span>
-                </div>
-              </div>
-              {/*
               <Image
-                src="/your-photo.jpg"
-                alt="Your Name"
+                src="/nino-meier.jpg"
+                alt="Nino Meier"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
               />
-              */}
             </div>
             
             {/* Decorative accent */}

@@ -25,7 +25,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "relative w-full",
+        "relative w-full snap-start",
         fullHeight && "min-h-screen",
         bgClasses[background],
         className
@@ -35,3 +35,4 @@ export function Section({
     </section>
   );
 }
+

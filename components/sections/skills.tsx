@@ -1,58 +1,75 @@
+"use client";
+
 import { Section } from "@/components/section";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const skillCategories = [
   {
-    category: "Frontend",
+    category: "FRONTEND",
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "React Native"],
   },
   {
-    category: "Backend",
+    category: "BACKEND",
     skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "Redis"],
   },
   {
-    category: "Tools & Platforms",
+    category: "TOOLS & PLATFORMS",
     skills: ["Git", "Docker", "AWS", "Vercel", "Firebase"],
   },
   {
-    category: "Other",
+    category: "OTHER",
     skills: ["REST APIs", "GraphQL", "CI/CD", "Agile", "Testing"],
   },
 ];
 
 export function SkillsSection() {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+
   return (
-    <Section id="skills" background="dark" fullHeight={false}>
-      <div className="container mx-auto px-4 py-20 lg:py-32">
-        <div className="space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
-              Skills & Technologies
+    <Section id="skills" background="default" fullHeight={false}>
+      <div className="container mx-auto px-6 lg:px-8 py-24 lg:py-32">
+        <div className="space-y-16">
+          {/* Header */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-px w-12 bg-primary" />
+              <p className="text-xs tracking-[0.3em] text-primary uppercase font-medium">
+                Expertise
+              </p>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold tracking-tight accent-line inline-block">
+              SKILLS & TECH
             </h2>
-            <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-              Tools and technologies I work with to bring ideas to life
+            <p className="text-lg text-muted-foreground max-w-2xl mt-8">
+              Technologies and tools used to build exceptional experiences
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Skills Grid */}
+          <div
+            ref={ref as React.RefObject<HTMLDivElement>}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
             {skillCategories.map((category, index) => (
-              <Card key={index} className="bg-zinc-900 border-zinc-800">
-                <CardHeader>
-                  <CardTitle className="text-white">{category.category}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-3 py-1.5 text-sm font-medium bg-zinc-800 text-zinc-300 rounded-md hover:bg-zinc-700 transition-colors"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              <div
+                key={index}
+                className={`space-y-4 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-primary border-b border-primary/30 pb-2">
+                  {category.category}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 text-sm font-medium bg-secondary text-foreground border border-border/50 hover:border-primary/50 hover:bg-secondary/80 transition-all"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>

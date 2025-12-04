@@ -1,20 +1,13 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
 
 export function Hero() {
-  const [isLocked, setIsLocked] = useState(false);
-
   const scrollToNext = () => {
     const aboutSection = document.querySelector("#about");
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  const toggleLock = () => {
-    setIsLocked(!isLocked);
   };
 
   return (
@@ -66,14 +59,6 @@ export function Hero() {
           </p>
         </div>
       </div>
-
-      {/* Scroll Lock Indicator */}
-      <button
-        onClick={toggleLock}
-        className="absolute bottom-32 left-1/2 -translate-x-1/2 text-xs tracking-widest text-muted-foreground uppercase hover:text-primary transition-colors z-10"
-      >
-        {isLocked ? "Tap to unlock" : "Tap to lock"}
-      </button>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">

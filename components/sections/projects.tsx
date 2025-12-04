@@ -96,7 +96,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
       className={`group relative gpu-accelerate ${
         isVisible ? "animate-fade-in-up" : "opacity-0"
       }`}
-      style={{ animationDelay: `${index * 150}ms` }}
+      style={{ animationDelay: `${index * 50}ms` }}
     >
       {/* Image Container */}
       <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-muted mb-6 border border-border/50">

@@ -54,7 +54,7 @@ export function SkillsSection() {
               <div
                 key={index}
                 className={`space-y-4 gpu-accelerate ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
-                style={{ animationDelay: `${index * 100}ms` }}
+                style={{ animationDelay: `${index * 30}ms` }}
               >
                 <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-primary border-b border-primary/30 pb-2">
                   {category.category}

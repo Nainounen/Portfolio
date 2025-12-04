@@ -15,7 +15,7 @@ export function AboutSection() {
           {/* Left: Image/Visual */}
           <div
             ref={imageRef as React.RefObject<HTMLDivElement>}
-            className={`relative ${imageVisible ? "animate-slide-in-left" : "opacity-0"}`}
+            className={`relative gpu-accelerate ${imageVisible ? "animate-slide-in-left" : "opacity-0"}`}
           >
             <div className="relative aspect-[3/4] rounded-lg overflow-hidden border border-border/50">
               <Image
@@ -35,7 +35,7 @@ export function AboutSection() {
           {/* Right: Content */}
           <div
             ref={contentRef as React.RefObject<HTMLDivElement>}
-            className={`space-y-8 ${contentVisible ? "animate-slide-in-right" : "opacity-0"}`}
+            className={`space-y-8 gpu-accelerate ${contentVisible ? "animate-slide-in-right" : "opacity-0"}`}
           >
             {/* Header */}
             <div className="space-y-4">

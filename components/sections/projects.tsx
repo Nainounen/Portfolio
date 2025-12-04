@@ -93,7 +93,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
   return (
     <article
       ref={ref as React.RefObject<HTMLElement>}
-      className={`group relative ${
+      className={`group relative gpu-accelerate ${
         isVisible ? "animate-fade-in-up" : "opacity-0"
       }`}
       style={{ animationDelay: `${index * 150}ms` }}

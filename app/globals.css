@@ -148,22 +148,27 @@
 
   .animate-fade-in {
     animation: fade-in 0.8s ease-out forwards;
+    will-change: opacity, transform;
   }
 
   .animate-fade-in-up {
     animation: fade-in-up 1s ease-out forwards;
+    will-change: opacity, transform;
   }
 
   .animate-slide-in-left {
     animation: slide-in-left 0.8s ease-out forwards;
+    will-change: opacity, transform;
   }
 
   .animate-slide-in-right {
     animation: slide-in-right 0.8s ease-out forwards;
+    will-change: opacity, transform;
   }
 
   .animate-scale-in {
     animation: scale-in 0.6s ease-out forwards;
+    will-change: opacity, transform;
   }
 
   /* Scroll effects */
@@ -212,5 +217,12 @@
     width: 60px;
     height: 3px;
     background: var(--primary);
+  }
+
+  /* Force GPU acceleration to prevent flicker */
+  .gpu-accelerate {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 }

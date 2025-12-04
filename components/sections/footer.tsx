@@ -20,7 +20,12 @@ export function FooterSection() {
       <div className="container mx-auto px-6 lg:px-8 py-24 lg:py-32">
         <div
           ref={ref as React.RefObject<HTMLDivElement>}
-          className={`max-w-4xl mx-auto space-y-16 gpu-accelerate ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
+          className="max-w-4xl mx-auto space-y-16"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+          }}
         >
           {/* Main CTA */}
           <div className="text-center space-y-8">

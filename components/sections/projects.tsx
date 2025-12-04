@@ -93,10 +93,12 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
   return (
     <article
       ref={ref as React.RefObject<HTMLElement>}
-      className={`group relative gpu-accelerate ${
-        isVisible ? "animate-fade-in-up" : "opacity-0"
-      }`}
-      style={{ animationDelay: `${index * 50}ms` }}
+      className="group relative"
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+        transition: `opacity 0.6s ease-out ${index * 0.1}s, transform 0.6s ease-out ${index * 0.1}s`,
+      }}
     >
       {/* Image Container */}
       <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-muted mb-6 border border-border/50">

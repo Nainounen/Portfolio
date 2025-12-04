@@ -15,7 +15,12 @@ export function AboutSection() {
           {/* Left: Image/Visual */}
           <div
             ref={imageRef as React.RefObject<HTMLDivElement>}
-            className={`relative gpu-accelerate ${imageVisible ? "animate-slide-in-left" : "opacity-0"}`}
+            className="relative"
+            style={{
+              opacity: imageVisible ? 1 : 0,
+              transform: imageVisible ? 'translateX(0)' : 'translateX(-20px)',
+              transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+            }}
           >
             <div className="relative aspect-[3/4] rounded-lg overflow-hidden border border-border/50">
               <Image
@@ -35,7 +40,12 @@ export function AboutSection() {
           {/* Right: Content */}
           <div
             ref={contentRef as React.RefObject<HTMLDivElement>}
-            className={`space-y-8 gpu-accelerate ${contentVisible ? "animate-slide-in-right" : "opacity-0"}`}
+            className="space-y-8"
+            style={{
+              opacity: contentVisible ? 1 : 0,
+              transform: contentVisible ? 'translateX(0)' : 'translateX(20px)',
+              transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+            }}
           >
             {/* Header */}
             <div className="space-y-4">

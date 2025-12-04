@@ -53,8 +53,12 @@ export function SkillsSection() {
             {skillCategories.map((category, index) => (
               <div
                 key={index}
-                className={`space-y-4 gpu-accelerate ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
-                style={{ animationDelay: `${index * 30}ms` }}
+                className="space-y-4"
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                  transition: `opacity 0.6s ease-out ${index * 0.08}s, transform 0.6s ease-out ${index * 0.08}s`,
+                }}
               >
                 <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-primary border-b border-primary/30 pb-2">
                   {category.category}

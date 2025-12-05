@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ninomeier.dev", // Update with your actual domain
+    url: "https://nainounen.com", // Update with your actual domain
     title: "Nino Meier - Portfolio",
     description: "Application Developer Apprentice at Swisscom | SiteLab Team Lead | Building modern web applications with React, Next.js, and AI",
     siteName: "Nino Meier Portfolio",

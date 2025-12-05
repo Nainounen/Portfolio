@@ -28,13 +28,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nainounen.com", // Update with your actual domain
+    url: "https://nainounen.com",
     title: "Nino Meier - Portfolio",
     description: "Application Developer Apprentice at Swisscom | SiteLab Team Lead | Building modern web applications with React, Next.js, and AI",
     siteName: "Nino Meier Portfolio",
     images: [
       {
-        url: "/og-image.png", // You need to create this image
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Nino Meier - Application Developer at Swisscom",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nino Meier - Portfolio",
     description: "Application Developer Apprentice at Swisscom | Building modern web applications with React, Next.js, and AI",
-    images: ["/og-image.png"], // You need to create this image
+    images: ["/og-image.png"],
   },
 };
 

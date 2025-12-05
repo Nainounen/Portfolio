@@ -25,6 +25,28 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-touch-icon.png",
   },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://ninomeier.dev", // Update with your actual domain
+    title: "Nino Meier - Portfolio",
+    description: "Application Developer Apprentice at Swisscom | SiteLab Team Lead | Building modern web applications with React, Next.js, and AI",
+    siteName: "Nino Meier Portfolio",
+    images: [
+      {
+        url: "/og-image.png", // You need to create this image
+        width: 1200,
+        height: 630,
+        alt: "Nino Meier - Application Developer at Swisscom",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nino Meier - Portfolio",
+    description: "Application Developer Apprentice at Swisscom | Building modern web applications with React, Next.js, and AI",
+    images: ["/og-image.png"], // You need to create this image
+  },
 };
 
 export default function RootLayout({
